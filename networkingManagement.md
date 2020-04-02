@@ -325,4 +325,5 @@ sysstat
 yum install nmap
 
 nmap scanme.nmap.org        #scan port open on a server
+nmap --iflist
 ```

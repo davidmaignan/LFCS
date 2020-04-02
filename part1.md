@@ -35,3 +35,5 @@ systemctl isolate graphical.target
 
 ```
 
+https://app.pluralsight.com/library/courses/lfcs-red-hat-7-essentials/table-of-contents
+
