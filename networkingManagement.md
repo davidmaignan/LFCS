@@ -89,9 +89,7 @@ dig +short pluralsight.com MX   #mail server
 ## Synchronisation - NTP network time protocol
 
 Setting a time server and synchronize client with accurate time. Reduce http request outside.
-
 Hardware vs system time : hwclock command
-
 Hardware clock (motherboard) shutdown script write systemclock to hwclock so when starts up get right time
 
 ```bash
@@ -246,7 +244,6 @@ firewall-cmd --permanent --zone=external --add-interface=enp0s3
 systemctl restart firewalld.service
 
 firewall-cmd --set-default-zone=external
-
 
 firewall-cmd --list-all
 

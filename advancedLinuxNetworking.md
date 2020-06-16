@@ -3,9 +3,7 @@
 ```bash
 ip -c a s
 ... mtu 1500    #Dataframe size (datalayer - ethernet)
-```
 
-```bash
 arp -c
 ip neighbor
 
@@ -56,6 +54,14 @@ ip route
 
 ```
 
+## Network
+
+```bash
+nmap -sn 192.168.2.0/24         #<network/mask>
+nmap 192.168.2.0/24             #deep scan
+
+```
+
 ## TCP
 
 ```bash
@@ -78,7 +84,7 @@ scp root@192.168.1.1:/var/www/html/largeFile.bin
 ping 192.168.1.1
 #Network unreachable
 ip route
-# default route ? 
+# default route ?
 arp -a
 # empty ?
 

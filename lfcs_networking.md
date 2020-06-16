@@ -69,7 +69,4 @@ systemctl start NetworkManager.service
 mncli con show (not showing enp0s8)
 systemctl stop NetworkManager.service
 
-
-#Routing
-
-
+# Routing

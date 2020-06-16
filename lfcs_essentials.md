@@ -1,35 +1,47 @@
-Commands
-# OS info
+# Essentials commands
 
-# kernel info
+## kernel info
+
+```bash
 cat /etc/system-release
 lsb_release -d
 rpm -qf $(which lsb_release)
 uname -r
 cat /proc/version
+```
 
-# Boot partition
+## Boot partition
+
+```bash
 cat /proc/cmdline
 df
+```
 
+## Partitions
 
-
-# Partitions
+```bash
 lsblk
 fdisk -l
+```
 
-# Disk - Space - Usage
+## Disk - Space -
+
+```bash
 du -sh /etc (disk usage)
+```
 
+## Messassing users logged
 
-# Messassing users logged on
+```bash
 write david
 wall < file_message.txt
 
 mesg y|n (turn on|off messaging)
+```
 
+## System
 
-# System commands
+```bash
 shutdown
 reboot
 halt
@@ -38,26 +50,29 @@ init --help (0: poweroff, 6: reboot....)
 
 shutdown -h 10 (minutes) "The system goes down in 10 minutes"
 shutdown -c (cancel)
+```
 
-# NetWorking 
-# ----------
+## NetWorking
 
-ip -brief addr / link 
+```bash
+ip -brief addr / link
 ip addr (ip a)
 ip r (root)
 ip n (list neighbourgs))
 
 ip netns (namespace - virtualize namespacing))
+```
 
+## Process management
 
-# Process management
+```bash
 ps
 pgrep
+```
 
+## Runlevels: defines level to log/run system (5: gui, 3: multi-agent)
 
-
-
-# Runlevels: defines level to log/run system (5: gui, 3: multi-agent)
+```bash
 who
 who -r (runlevel: 5 gui)
 runlevel (get level)
@@ -67,45 +82,49 @@ systemctl isolate multi-user.target (change run level)
 ex: runlevel: 5 (gui), 3 (multi-user)
 
 init: 0 (poweroff), 6 (reboot)
+```
 
-
-
-# add user to sudoers
+## add user to sudoers
 usermod -aG wheel david (add david to sudoer)
 
-# Proc
+## Proc
 cat /proc/version
 
-# Piping and redirection
+## Piping and redirection
 cut -f7 -d: /etc/passwd | sort | uniq | wc -l
 mkfifo mypipe
 ls > mkfifo
 
 
-# tar
+## tar
+```bash
 tar -cvf /tmp/david.tar /home/david
 tar -tf david.tar (check content)
 tar -cvzf (create/verbose/gzip/format)
 tar -cvjf (create/verbose/bzip2/format)
-(-c create / -t test / -x expand (in pwd)) 
+(-c create / -t test / -x expand (in pwd))
+```
 
-# cpio
+#### cpio
+
+```bash
 find -name '*.pdf' | cpio -0 > /tmp/pdf.cpio
 cpio -id < /tmp/pdf.cpio (i: input, d:directory)
+```
 
-# tree
+## tree
 display file structure
 
-# dd 
+## dd 
 gzip file.tar / gunzip file.tar.zip
 bzip2 file.tar / bunzip2 file.tar.bz2
 
-# Versioning
+## Versioning
 ci hello.sh
 rlog -b hello.sh
 co -l hello.sh
 
-# Permission
+## Permission
 stat hello.sh,v
 umask u=rwx,g=rw,0=
 umask: remove permissions
@@ -123,19 +142,19 @@ su -l (set all ENV)
 /etc/sudoers (SSHPermitRootLogin)
 
 
-# screen
+## screen
 screen command to study
 
 
-# Boot process
+## Boot process
 vi /etc/default/grub 
 grub2-mkconfig -o /boot/grub2/grub.cfg
 
-# Change hostname
+## Change hostname
 hostnamectl set-hostname hostname.domain.com
 
 
-# Networking
+## Networking
 ip -brief addr
 nmcli conn show
 nmcli conn up enp0s2

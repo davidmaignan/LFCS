@@ -457,9 +457,13 @@ semanage port -a -t ssh_port_t -p 2222
 ### Managing software on Centos
 
 ```bash
-yum install --downloadonly httpd
-rpm -qil nmap
-rpm -qpi <package.rpm>
+rpm -qa             #list all same than: yum list installed
+rpm -i <name.rpm>   #install rpm (attention dependencies)
+rpm -e nmap
+rpm -ql nmap            #query list
+rpm -qpl <package.rpm>  #query from rpm file
+rpm -V nmap             # 
+
 
 rpm -i httpd.rpm        #dependancies
 error: Failed dependencies:
@@ -473,6 +477,72 @@ rpm -qf /etc/hosts              #get package from
 rpm -qi setup                   #query rpm package instaled
 rpm -V setup                    #verification modification
 
+yum version
+yum install --downloadonly httpd
+yum info 
+yum install -y nmap
+yum deplist nmap
+yum list installed
+yum list available
 
+#configure yum repositories
+
+#/etc/yum.repos.d
+yum info epel-release.noarch
+rpm -ql epel-release
+
+
+yum repolist
+yum repolist all    #show disabled one
+yum-config-manager --add <repo_id>
+yum-config-manager --enable <repo_id>
+
+dnf repolist
+dnf config-manager --disable <repo_id>
+dnf makecache
+
+# yum cache
+yum makecache   #build cache from repositories
+yum clean {all|cache|dbcache|..}
+
+# Kernel update
+yum update kernel       #install the new kernel (multiple kernel)
+
+#/etc/yum.conf
+> exclude=kernel*
+
+# Source RPMS
+grep ^enabled CentOS-Sources.repo
+yum repolist
+yum install -y yum-utils
+yumdownloader --source zsh      #download rpm
+yum install ncurses-devel
+rpm -i zsh-....src.rpm
+cd /root/rpmbuild/SOURCES/
+tar -xj zsh.tar.bz2
+cd zsh/ ; ./configure     #create makefile
+make ; make install
+
+
+```
+
+### Services
+
+```bash
+systemctl enabled httpd --now       #enable and start
+systemctl {enabled|disabled|start|stop|restart} <service>
+systemctl list-units --type=service
+systemctl list-unit-files
+
+systemctl mask name.service
+systemctl unmask name.service
+```
+
+### Puppet
+
+```bash
+yum install puppet
+puppet --version
+facter | grep hostname
 
 ```
