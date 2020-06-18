@@ -8,6 +8,10 @@ lsb_release -d
 rpm -qf $(which lsb_release)
 uname -r
 cat /proc/version
+
+# ubuntu
+lsb_release -d
+cat /etc/issue
 ```
 
 ## Boot partition
